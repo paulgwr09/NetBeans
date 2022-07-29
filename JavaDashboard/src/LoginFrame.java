@@ -1,3 +1,8 @@
+
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.*;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -34,6 +39,7 @@ public class LoginFrame extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
         setBackground(new java.awt.Color(255, 204, 204));
 
@@ -132,11 +138,12 @@ public class LoginFrame extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String Username = txtUser.getText();
         String Password = txtPass.getText();
-        if(Username.contains("pgw") && Password.contains("Rb3G17sY")) {
+        if(Username.contains("pgw") && Password.contains("Rb3G17sY") || Username.contains("cbo") && Password.contains("KhEl2kiV")) {
             txtUser.setText("");
             txtPass.setText("");
             MainFrame afterLogin = new MainFrame();
             afterLogin.setVisible(true);
+            closeFrame();
             
             
            
@@ -151,7 +158,14 @@ public class LoginFrame extends javax.swing.JFrame {
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnCloseActionPerformed
-
+    
+    public void closeFrame(){
+        WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+        
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
